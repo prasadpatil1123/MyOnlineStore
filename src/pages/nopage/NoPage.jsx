@@ -1,8 +1,9 @@
 import React from 'react'
+import Layout from '../../components/layout/Layout'
 
 function NoPage() {
   return (
-    <div>NoPage</div>
+    <Layout>NoPage</Layout>
   )
 }
 

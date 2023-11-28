@@ -1,8 +1,8 @@
 // import React from 'react';
 import { useState } from 'react';
-import MyContext from './myContext';
+import myContext from './myContext';
 
-function myState(props) {
+export default function myState(props) {
     // const state = {
     //     name: "Kashiprasad Patil",
     //     role : " React Developer "
@@ -25,10 +25,9 @@ function myState(props) {
     }
   return (
     // <MyContext.Provider value= {{state,comapany}}>
-    <MyContext.Provider value= {{mode,toggleMode}}>
+    <myContext.Provider value= {{mode,toggleMode}}>
 {props.children}
-    </MyContext.Provider>
+    </myContext.Provider>
   )
 }
 
-export default myState

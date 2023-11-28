@@ -34,6 +34,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                // eslint-disable-next-line no-undef
                 onClick={() => setOpen(true)}
                 style={{
                   backgroundColor: mode === "dark" ? "rgb(80 82 87)" : "",

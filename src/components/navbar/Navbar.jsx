@@ -90,7 +90,7 @@ export default function Navbar() {
                     Order
                   </Link>
                   <Link
-                    to={"/allproducts"}
+                    to={"/dashboard"}
                     className="text-sm font-medium text-gray-700"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >

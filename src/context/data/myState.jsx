@@ -1,17 +1,8 @@
 // import React from 'react';
-import { useState } from 'react';
+import { mode,useState } from 'react';
 import myContext from './myContext';
 
 export default function myState(props) {
-    // const state = {
-    //     name: "Kashiprasad Patil",
-    //     role : " React Developer "
-    // }
-    // const comapany = {
-    //   job : "RSL Solution",
-    //   exp: "One Year",
-      
-    // }
 
     const [mode,setMode] = useState('light');
     const toggleMode = ()=>{
@@ -23,9 +14,11 @@ export default function myState(props) {
         document.body.style.backgroundColor='white';
       }
     }
+
+    const [loading,setLoading]= useState(false);
   return (
     // <MyContext.Provider value= {{state,comapany}}>
-    <myContext.Provider value= {{mode,toggleMode}}>
+    <myContext.Provider value= {{mode,toggleMode,loading}}>
 {props.children}
     </myContext.Provider>
   )

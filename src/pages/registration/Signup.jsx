@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import myContext from "../../context/data/myContext";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, fireDB } from "../../fireabase/FirebaseConfig";
+import { auth, fireDB } from "../../firebase/FirebaseConfig";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import Loader from "../../components/loader/Loader";
+
 
 function Signup() {
   const [name, setName] = useState("");

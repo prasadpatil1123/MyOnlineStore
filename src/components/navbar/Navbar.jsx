@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 
-export default function Navbar() {
-  // const [open, setOpen] = useState(false);
+export default function Navbar() {  
   const context = useContext(myContext);
   const { toggleMode, mode } = context;
   return (

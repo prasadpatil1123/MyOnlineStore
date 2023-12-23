@@ -33,7 +33,7 @@ export default function Login() {
       window.location.href = "/";
       setLoading(false);
     } catch (error) {
-      toast.error("Signin Failed", {
+      toast.error("Signin Failed", { 
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,

@@ -21,13 +21,12 @@ function Signup() {
     if (name == "" || email == "" || password == "") {
       return toast.error("All fields are required");
     }
-    try {
-        
+    try {        
       const users = await createUserWithEmailAndPassword(auth, email, password); // for AUthentication
       const user = {
         name: name,
         uid: users.user.uid,
-        email: users.user.email,
+        email: users.user.email, 
         time: Timestamp.now(),
       }; // creating object
       const userRef = collection(fireDB, "users");

@@ -1,12 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import myContext from "../../context/data/myContext";
 import { Link } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 
-export default function Navbar() {  
+export default function Navbar() {
   const context = useContext(myContext);
-  const { toggleMode, mode } = context;
+  const { mode, toggleMode } = context;
+  const [open, setOpen] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user.user.email);
+
+  const logout = () => {
+    localStorage.clear("user");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="bg-white sticky top-0 z-50">
       <header className="relative bg-white">
@@ -88,19 +97,29 @@ export default function Navbar() {
                   >
                     Order
                   </Link>
-                  <Link
-                    to={"/dashboard"}
-                    className="text-sm font-medium text-gray-700"
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Admin
-                  </Link>
-                  <a
-                    className="text-sm font-medium text-gray-700 cursor-pointer"
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Logout
-                  </a>
+                  {user?.user?.email === "kashi786@smail.com" ? (
+                    <Link
+                      to={"/dashboard"}
+                      className="text-sm font-medium text-gray-700"
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Admin
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+
+                  {user ? (
+                    <a
+                    onClick={logout}
+                      className="text-sm font-medium text-gray-700 cursor-pointer"
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Logout
+                    </a>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
@@ -135,8 +154,8 @@ export default function Navbar() {
                     {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
                     {mode === "light" ? (
                       <FiSun className="" size={30} />
-                    // eslint-disable-next-line no-constant-condition
-                    ) : "dark" ? (
+                    ) : // eslint-disable-next-line no-constant-condition
+                    "dark" ? (
                       <BsFillCloudSunFill size={30} />
                     ) : (
                       ""

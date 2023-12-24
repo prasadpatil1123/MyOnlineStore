@@ -49,7 +49,7 @@ function MyState(props) {
       await addDoc(productRef, products)
       toast.success("Product Add successfully")
       getProductData()
-      // closeModal()
+      closeModal()
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -92,7 +92,7 @@ function MyState(props) {
   return (
     <MyContext.Provider value={{ 
       mode, toggleMode, loading,setLoading,
-      products, setProducts,addProduct }}>
+      products, setProducts,addProduct,product,setProduct }}>
       {props.children}
     </MyContext.Provider>
   )

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import myContext from "../../../context/data/myContext";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
@@ -9,6 +9,18 @@ import { Link } from "react-router-dom";
 function DashboardTab() {
   const context = useContext(myContext);
   const { mode, product } = context;
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+      setIsOpen(false)
+  }
+
+  function openModal() {
+      setIsOpen(true)
+  }
+  const goToAdd= ()=>{
+    window.location.href='/addproduct'
+  }
   return (
     <div>
       <div className="container mx-auto">
@@ -57,7 +69,8 @@ function DashboardTab() {
                   Product Details
                 </h1>
                 <div className=" flex justify-end">
-                  <Link to={"/addproduct"}>
+                  {/* <Link to={"/addproduct"}> */}
+                    <div onClick={goToAdd}>
                     <button
                       type="button"
                       className="focus:outline-none text-white bg-pink-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
@@ -71,7 +84,8 @@ function DashboardTab() {
                         Add Product <FaCartPlus size={20} />
                       </div>
                     </button>
-                  </Link>
+                    </div>
+                  {/* </Link> */}
                 </div>
                 <div className="relative overflow-x-auto ">
                   <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400  ">
@@ -178,6 +192,7 @@ function DashboardTab() {
                                       />
                                     </svg>
                                   </div>
+                                  
                                   <Link to={"/updateproduct"}>
                                     <div>
                                       <svg
